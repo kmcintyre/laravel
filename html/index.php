@@ -7,6 +7,7 @@
     <title>laravel</title>
   </head>
   <body>
+	<script data-main="scripts/main" src="scripts/require.js"></script>
 	<?php echo '<p>Hello World</p>'; ?> 
   </body>
 </html>

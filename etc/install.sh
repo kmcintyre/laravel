@@ -7,7 +7,9 @@ sudo apt-get install mysql-server php5-mysql
 curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
 sudo apt-get install -y nodejs
 sudo apt-get install npm
-sudo npm install -g autobahn
+sudo npm install autobahn
+# move build node_module to node_modules
+sudo npm install requirejs
 sudo apt-get install nginx
 sudo apt-get install git
 
