@@ -1,6 +1,6 @@
 define(["jquery"], function($) {	
 	$( document ).ready(function() {
-		var websocket = new WebSocket('http://vulcun.nwice.com:8080');		
+		var websocket = new WebSocket('ws://vulcun.nwice.com:8080');		
 		
 		websocket.onopen = function(evt) {			
 			console.log('on open');			
