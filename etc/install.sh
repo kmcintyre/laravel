@@ -9,6 +9,7 @@ sudo apt-get install -y nodejs
 sudo apt-get install npm
 sudo npm install -g autobahn
 sudo apt-get install nginx
+sudo apt-get install git
 
 #edits from 
 #https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-on-ubuntu-12-04
