@@ -13,7 +13,7 @@
 
 # Route::get('/', 'WelcomeController@index');
 
-Route::get('/', 'Contest@index');
+Route::get('/', 'ContestController@index');
 
 Route::get('home', 'HomeController@index');
 

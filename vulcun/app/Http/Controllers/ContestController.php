@@ -1,11 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+use App\Contest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class Contest extends Controller {
+class ContestController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +15,8 @@ class Contest extends Controller {
 	 */
 	public function index()
 	{
-	return view('contest');	//
+	$contests = Contest::all();	
+	return view('contest')->with('contests', $contests);
 	}
 
 	/**

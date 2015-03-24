@@ -8,6 +8,28 @@
   </head>
   <body>
         <script data-main="scripts/main" src="scripts/require.js"></script>
-        <?php echo '<p>Hello World</p>'; ?>
+	<h1>contests</h1>
+	<table>
+	<tr>
+	<th>id</th>
+	<th>Contest Name</th>
+	<th>Prize Pool</th>
+	<th>Entry Fee</th>
+	<th>Entries</th>
+	<th>League</th>
+	<th>Starts At</th>
+	</tr>
+	@foreach ($contests as $contest)
+	  <tr>
+	  <td>{{ $contest->id }}</td>
+	  <td>{{ $contest->contestname }}</td>
+	  <td>{{ $contest->prizepool }}</td>
+	  <td>{{ $contest->entryfee }}</td>
+	  <td>{{ $contest->entries }} of {{ $contest->maxentries }}</td>
+	  <td>{{ $contest->league }}</td>
+	  <td>{{ $contest->starts_at }}</td>
+	  </tr>
+	@endforeach
+	</table>
   </body>
 </html>
