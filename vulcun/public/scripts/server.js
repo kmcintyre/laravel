@@ -28,9 +28,9 @@ wss.on('connection', function(ws) {
     	var play = JSON.parse(message);
     	var connection = mysql.createConnection({
                 host     : 'localhost',
-                user     : 'root',
-                password : 'coldone',
-                database : 'vulcun'
+                user     : '',
+                password : '',
+                database : ''
         });
 
     	connection.config.queryFormat = function (query, values) {
