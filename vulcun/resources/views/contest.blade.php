@@ -28,6 +28,7 @@
 	  <td>{{ $contest->entries }} of {{ $contest->maxentries }}</td>
 	  <td>{{ $contest->league }}</td>
 	  <td>{{ $contest->starts_at }}</td>
+	  <td><button>Enter</button></td>
 	  </tr>
 	@endforeach
 	</table>

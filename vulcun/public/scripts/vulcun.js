@@ -2,7 +2,6 @@ define(["jquery"], function($) {
 	$( document ).ready(function() {
 
 		$('table tr th').each(function (el) {
-		   console.log(el)
 		   $(this).click(function (e) {
 			$('table tr:gt(0)').detach().sort(function (a, b) {
 			 var ca =  $(a).children(':eq(' + el + ')').html();
@@ -37,7 +36,28 @@ define(["jquery"], function($) {
 		};
 			
 		websocket.onmessage = function(evt) {
-			$(document.body).append(evt.data);
+			try {
+			    var json = JSON.parse(evt.data)
+			    console.log(json)
+			    $('table tr:gt(0)').find('td:eq(0)').each(function () {
+				if ( parseInt(this.innerHTML) == json.id ) {
+				  $(this).siblings(':eq(3)').html(json.entries + ' of ' + json.maxentries);
+				}
+			    });
+			} catch (err) {
+			    $(document.body).append('connection key:' + evt.data);
+			}
 		}
+		$('button').click(function (e){
+			var id = e.target.parentNode.parentNode.firstElementChild.innerHTML;
+			var action = e.target.innerHTML;
+			console.log(id + ':' + action);
+			if ( action == 'Enter' ) {
+				e.target.innerHTML = 'Exit';
+			} else {
+				e.target.innerHTML = 'Enter';
+			}
+			websocket.send(JSON.stringify({ id: id, action : action }));
+		});
 	});
 });
