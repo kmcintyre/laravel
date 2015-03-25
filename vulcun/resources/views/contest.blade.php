@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>laravel</title>
+    <style>
+	table {border-collapse: collapse;}
+	td    {padding: 2px;}
+	th {
+    	  background-color: black;
+    	  color: white;
+	}
+	tr.changed td {background-color: #d3d3d3}
+    </style>
   </head>
   <body>
         <script data-main="scripts/main" src="scripts/require.js"></script>
@@ -18,6 +27,7 @@
 	<th>Entries</th>
 	<th>League</th>
 	<th>Starts At</th>
+	<th></th>
 	</tr>
 	@foreach ($contests as $contest)
 	  <tr>

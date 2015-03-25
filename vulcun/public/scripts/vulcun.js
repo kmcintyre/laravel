@@ -19,6 +19,33 @@ define(["jquery"], function($) {
 			}
 		   });
 		})
+		var leagues = new Array();
+		$('table tr:gt(0)').each(function () {
+		  $(this).children('td:eq(5)').each(function () {
+		    this.classList.add('league')
+		    if ($.inArray(this.innerHTML, leagues) < 0 ) {
+			leagues[leagues.length] = this.innerHTML;
+		    }
+		  });
+		});
+		$('table').prepend('<select><option value="">Filter</select>')
+		$('select').change(function () {
+		  var sv = this.options[this.selectedIndex].value;
+		  if(sv){
+	            $('.league').each(function () {
+			if (this.innerHTML == sv) {
+			  $(this.parentNode).show()
+			} else {
+			  $(this.parentNode).hide()
+			}
+		    });
+		  } else {
+		    $('.league').parent().show()
+		  }
+		});
+		$.each(leagues, function () {
+		  $('select').append('<option value=' + this + '>' + this);
+		})
 
 		var websocket = new WebSocket('ws://vulcun.nwice.com:8080');		
 		
@@ -42,6 +69,8 @@ define(["jquery"], function($) {
 			    $('table tr:gt(0)').find('td:eq(0)').each(function () {
 				if ( parseInt(this.innerHTML) == json.id ) {
 				  $(this).siblings(':eq(3)').html(json.entries + ' of ' + json.maxentries);
+				  this.parentNode.classList.add('changed')
+				  setTimeout(function () { $('.changed').removeClass('changed')}, 3000 );
 				}
 			    });
 			} catch (err) {
@@ -59,5 +88,8 @@ define(["jquery"], function($) {
 			}
 			websocket.send(JSON.stringify({ id: id, action : action }));
 		});
+		
+		
+
 	});
 });
